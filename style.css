@@ -1,0 +1,145 @@
+/* source:  https://meyerweb.com/eric/tools/css/reset/*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+body {
+    font-family: Arial, Helvetice, sans-serif;
+}
+h1 {
+  color: #A8A8A8;
+  font-size: 1.5em;
+}
+li {
+  list-style-type: none;
+}
+ul {
+  padding: none;
+}
+#map {
+  height: 100%;
+}
+#map-site {
+  width: 65%;
+  float: right;
+}
+#map-site.show {
+  width: 100%;
+}
+#sidebar {
+  width: 35%;
+  height: 100%;
+  background: #181818;
+  color: #A8A8A8;
+}
+#sidebar.hide {
+  display: none;
+}
+#box-container {
+  padding: 10%;
+  width: 80%;
+}
+#search-bar {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+#filter-area-text {
+  width: 100%;
+}
+.sidebar {
+  background: #000000;
+  color: #A8A8A8;
+  height: 100%;
+  text-align: left;
+  width: 25%;
+  float: left;
+}
+.menu-bar {
+  height: 3.5em;
+  background: #000000;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+.btn-container {
+  padding-top: 6px;
+  padding-left: 15px;
+}
+@media screen and (max-width: 800px) {
+  #sidebar {
+    width: 50%;
+    float: left;
+    margin-right: 0px;
+    display: inline-block;
+  }
+  #map-site {
+    width: 50%;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #sidebar {
+    width: 70%;
+    float: left;
+    margin-right: 0px;
+    display: inline-block;
+  }
+  #map-site {
+    width: 30%;
+    float: right;
+  }
+  #search-bar {
+    padding-right: 5%;
+  }
+  h1 {
+    font-size: 1.2em;
+  }
+}

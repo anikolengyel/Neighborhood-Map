@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="map-site">
+        <div class="menu-bar">
+          <div class="btn-container">
+            <div class="btn" onclick="toggleSidebar();showMap()">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+          </div>
+        </div>
+        <div id="map"></div>
+      </div>
+      <div id="sidebar">
+        <div id="box-container">
+          <h1>Budapest Nightlife Map</h1>
+          <div id="search-bar">
+            <div id="text-input">
+              <input id="filter-area-text" type="text" placeholder="Filter place!">
+            </div>
+            <input id="filter-area" type="button" value="Filter">
+          </div>
+          <ul class="names-list">
+            <li class="item">Something</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+      crossorigin="anonymous"></script>
+    <script>
+      var map;
+      // Create a new blank array for all the listing markers.
+      function initMap() {
+        // Create a styles array to use with the map.
+        var styles = [
+          {
+            featureType: 'water',
+            stylers: [
+              { color: '#19a0d8' }
+            ]
+          },{
+            featureType: 'administrative',
+            elementType: 'labels.text.stroke',
+            stylers: [
+              { color: '#ffffff' },
+              { weight: 6 }
+            ]
+          },{
+            featureType: 'administrative',
+            elementType: 'labels.text.fill',
+            stylers: [
+              { color: '#e85113' }
+            ]
+          },{
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [
+              { color: '#efe9e4' },
+              { lightness: -40 }
+            ]
+          },{
+            featureType: 'transit.station',
+            stylers: [
+              { weight: 9 },
+              { hue: '#e85113' }
+            ]
+          },{
+            featureType: 'road.highway',
+            elementType: 'labels.icon',
+            stylers: [
+              { visibility: 'off' }
+            ]
+          },{
+            featureType: 'water',
+            elementType: 'labels.text.stroke',
+            stylers: [
+              { lightness: 100 }
+            ]
+          },{
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [
+              { lightness: -100 }
+            ]
+          },{
+            featureType: 'poi',
+            elementType: 'geometry',
+            stylers: [
+              { visibility: 'on' },
+              { color: '#f0e4d3' }
+            ]
+          },{
+            featureType: 'road.highway',
+            elementType: 'geometry.fill',
+            stylers: [
+              { color: '#efe9e4' },
+              { lightness: -25 }
+            ]
+          }
+        ];
+        // Constructor creates a new map - only center and zoom are required.
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 47.4970, lng: 19.0634},
+          zoom: 13,
+          styles: styles,
+          mapTypeControl: false
+        });
+      }
+    </script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle('hide');
+      }
+      function showMap() {
+        document.getElementById("map-site").classList.toggle('show');
+      }
+    </script>
+
+    <script async defer
+        src=
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCVBeluqgUEuK4xBCIaPXAtsVH7OnSOPBk&v=3&callback=initMap">
+    </script>
+
+  </body>
+</html>
