@@ -1,374 +1,113 @@
-var styles = [
-  {
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#1d2c4d"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#8ec3b9"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#1a3646"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.country",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#4b6878"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#64779e"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.province",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#4b6878"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.man_made",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#334e87"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#023e58"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#283d6a"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#6f9ba5"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#1d2c4d"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#023e58"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#3C7680"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#304a7d"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#98a5be"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#1d2c4d"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#2c6675"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#255763"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#b0d5ce"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#023e58"
-      }
-    ]
-  },
-  {
-    "featureType": "transit",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#98a5be"
-      }
-    ]
-  },
-  {
-    "featureType": "transit",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#1d2c4d"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#283d6a"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#3a4762"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#0e1626"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#4e6d70"
-      }
-    ]
-  }
-]
-
-var locations = [
-    {
-      location: {"lat": 47.4970, "lng": 19.0634},
-      name: "Szimpla Kert",
-      place_id: "ChIJ5Q3SoELcQUcRpB0x-9NCdyY"
-    },
-    {
-      location: {"lat": 47.501341, "lng": 19.06528},
-      name: "Instant",
-      place_id: "ChIJ3RbjiB3cQUcRMR6GqCXvzzk"
-    },
-    {
-      location: {"lat" : 47.500737, "lng" : 19.059082},
-      name: "Aker't",
-      place_id: "ChIJeUfBw2vcQUcRsBNLJjNNazA"
-    },
-    {
-      location: {"lat" : 47.5005917, "lng" : 19.0692819},
-      name: "Fogas haz",
-      place_id: "ChIJSXAClWjcQUcRGx30AEH0nZY"
-    },
-    {
-      location: {"lat" : 47.4960738, "lng" : 19.0654356},
-      name: "Corvin Club & Roof Terrace",
-      place_id: "ChIJ13TLfGfcQUcRaUEdSMYgIeg"
-    }
-  ]
-
-
-var markers = [];
-var map;
-var markers = [];
-
+//foursquare API keys
 var fsClientID = "5EX5WDIQSCH5T0FF44WIBB35B1URTUCF0LKDVK5FBNJPJ5FO";
 var fsClientSecret = "KFPB0A0BS5OVVKKBZKCF35YD5OG3FYPQQ1O3MCMQPAGWKSVP";
 
+//define map as global variable
+var map;
 
+//Global ViewModel object
 var ViewModel = function() {
-  var self = this;
+  // differrentiate between ViewModel and "local" object
+  self = this;
+  // create array object
+  this.markers = new Array();
 
-  this.places = ko.observableArray(locations);
-
-};
-
-initMap = function() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom:13,
-    center: {lat: 47.4970, lng: 19.0634},
-    styles: styles
-  });
-  console.log("the map is ready!");
-
-  for (var i = 0; i < locations.length; i++) {
-    // Get the position from the location array.
-    var position = locations[i].location;
-    var title = locations[i].name;
-    // Create a marker per location, and put into markers array.
-    var marker = new google.maps.Marker({
-      position: position,
-      map: map,
-      title: title,
-      animation: google.maps.Animation.DROP,
-      id: i
+  //initialize map
+  this.initMap = function() {
+    console.log("Creating map...");
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom:15,
+      center: {lat: 47.4970, lng: 19.0634},
+      styles: styles
     });
-    markers.push(marker);
-    //console.log(markers);
   }
-  var addressArray = getFsInfo();
-  console.log(addressArray);
-  populateInfowindow = function(addressArray, map, marker) {
-    for(var i = 0; i < addressArray.length; i++) {
-      var markerInfo = addressArray[i];
-      console.log("markerInfo: ", markerInfo);
-      var infowindow = new google.maps.InfoWindow({
-        content: markerInfo
-      });
-      console.log("marker: ", marker);
-      marker.addListener('click', function () {
-        infowindow.open(map, marker);
-      })
+
+  // marker populator function to bind event listeners
+  this.populateMarker = function(){
+    self.fetchInfo(this);
+  };
+
+  // create ViewModel infoWindow
+  this.createInfoWindow = function() {
+      console.log("Creating infowindow...");
+      self.infoWindow = new google.maps.InfoWindow();
+  };
+
+  this.createMarkers = function() {
+    var markerData = [];
+
+    console.log("Creating marker data from locations...");
+    for (var i = 0; i < locations.length; i++) {
+      var obj = {name:"", lat:"", lng:""};
+
+      obj.name =  locations[i].name;
+      obj.lat = locations[i].location.lat;
+      obj.lng = locations[i].location.lng;
+
+      markerData.push(obj);
     }
-    console.log('We created the markers with listeners!');
-  }
-  populateInfowindow();
+    console.log("Created markers: ", markerData);
+    self.createMapsMarkers(markerData);
+  };
 
-}
+  this.createMapsMarkers = function(markerData){
+      //create Google Maps markers
+      for (var i in markerData){
+        console.log("Adding ", markerData[i].name)
+        this.marker = new google.maps.Marker({
+          map: map,
+          position: {
+            lat: markerData[i].lat,
+            lng: markerData[i].lng
+          },
+          title: markerData[i].name,
+          animation: google.maps.Animation.DROP
+        });
+        this.marker.setMap(map);
+        this.markers.push(this.marker);
+        this.marker.addListener('click', self.populateMarker);
+      }
+  };
 
-getFsInfo = function() {
-  var addressArray = [];
+  this.fetchInfo = function(marker) {
+    console.log("Event listener ", marker.title);
+    var markerInfo;
+    //regexp for cleaning out position
+    var pattern = /[()%]/g;
 
-  for(var i = 0; i<markers.length; i++) {
-    var markerPosition = String(markers[i].position);
-    var markerTitle = String(markers[i].title);
-    var markerPosition = markerPosition.replace('(','');
-    var markerPosition = markerPosition.replace(')','');
-    var markerPosition = markerPosition.replace('%','');
-    var markerPosition = markerPosition.replace(' ','');
-    //console.log(markerPosition);
-    var markerTitle = markerTitle.split(' ').join('+');
-    //console.log(markerTitle);
-
+    //GET API request builder
     var urlString = "https://api.foursquare.com/v2/venues/search?ll="
-    + markerPosition + "&name="
-    + markerTitle + "&intent=match&client_id="
+    + String(marker.position).replace(pattern, '') + "&name="
+    + String(marker.title).split(' ').join('+') + "&intent=match&client_id="
     + fsClientID + "&client_secret=" + fsClientSecret + "&v=20180622";
 
-    //console.log(urlString);
+    //fetch data
+      $.getJSON(urlString).done(function(data) {
+        try {
+          markerInfo = data.response.venues[0];
+          console.log("Fetched: ", marker.title, markerInfo);
+        }
+        catch (e) {
+          console.log("No results for ", marker.title);
+        }
 
-    $.getJSON(urlString, function(data) {
-      var markerInfo = data.response.venues[0].location.formattedAddress
-      //console.log(markerInfo);
-      addressArray.push(markerInfo);
-      console.log(addressArray);
-    });
-  }
-  console.log("type: ", typeof addressArray);
-  return addressArray;
-}
+      }).fail(function() {
+        console.log("API error at ", marker.title);
+      });
+      self.infoWindow.marker = marker;
+      self.infoWindow.setContent("<h2>" + marker.title + "</h2>" + String(markerInfo));
+      self.infoWindow.open(map, marker);
+  };
 
-populateInfowindow = function(infoArray, map, marker) {
-  for(var i = 0; i<infoArray.length; i++) {
-    var markerInfo = infoArray[i];
-    console.log("markerInfo: ", markerInfo);
-    var infowindow = new google.maps.InfoWindow({
-      content: markerInfo
-    });
-    console.log("marker: ", marker);
-    marker.addListener('click', function () {
-      infowindow.open(map, marker);
-    })
-  }
-  console.log('We created the markers with listeners!');
+  this.initMap();
+  this.createInfoWindow();
+  this.createMarkers();
+  console.log(self)
+};
 
-}
+
 
 
 $(document).ready(function(){
   ko.applyBindings(new ViewModel());
-
-})
+});

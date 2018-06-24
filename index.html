@@ -2,17 +2,17 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
+    <script src="styles.js"></script>
+    <script src="locations.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"></script>
     <script src="knockout-3.2.0.js"></script>
     <script src="model.js" charset="utf-8"></script>
-    <script src="mapStyle.js" charset="utf-8"></script>
-    <script src="app.js" charset="utf-8"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVBeluqgUEuK4xBCIaPXAtsVH7OnSOPBk&v=3&callback=initMap">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVBeluqgUEuK4xBCIaPXAtsVH7OnSOPBk&v=3&callback=initMap">
     </script>
+    <script src="app.js" charset="utf-8"></script>
 
   </head>
   <body>
@@ -38,8 +38,8 @@
             </div>
             <input id="filter-area" type="button" value="Filter">
           </div>
-          <ul class="names-list" data-bind="foreach: places">
-            <li class="item" data-bind="text: $data"></li>
+          <ul class="names-list" >
+            <li class="item" ></li>
           </ul>
         </div>
     </div>
