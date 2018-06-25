@@ -25,6 +25,10 @@ var ViewModel = function() {
 
   // marker populator function to bind event listeners, fetches information from foursquare
   this.populateMarker = function(){
+    this.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout((function() {
+        this.setAnimation(null);
+    }).bind(this), 200);
     self.fetchInfo(this);
   };
 
@@ -114,7 +118,6 @@ var ViewModel = function() {
   //create marker data and Google Maps markers
   this.createMarkers();
 
-  //binding function for filtering, fails because it can't bind title
   this.venues = ko.computed(function() {
     console.log("Update ", self.markers.length," elements");
     // results is for filtering
@@ -134,6 +137,8 @@ var ViewModel = function() {
     console.log("sorted results: ", results);
     return results;
   }, this);
+
+
 };
 
 // a function to sorting the titles by abc

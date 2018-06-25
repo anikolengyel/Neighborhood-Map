@@ -35,7 +35,7 @@
             </div>
           </div>
           <ul class="names-list" data-bind="foreach: venues">
-            <li class="item" data-bind="text: title"></li>
+            <li class="item" data-bind="text: title, click: $parent.populateMarker"></li>
           </ul>
         </div>
     </div>
