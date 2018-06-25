@@ -11,6 +11,7 @@ var ViewModel = function() {
   self = this;
   // create array object
   self.markers = new Array();
+  self.search = ko.observable('');
 
   //initialize map
   this.initMap = function() {
@@ -115,22 +116,37 @@ var ViewModel = function() {
 
   //binding function for filtering, fails because it can't bind title
   this.venues = ko.computed(function() {
-    console.log("start binding for ",self.markers.length," elements");
+    console.log("Update ", self.markers.length," elements");
     // results is for filtering
     var results = [];
+    console.log("Filtering for ", self.search());
     for (var i = 0; i < self.markers.length; i++){
-        console.log(i);
-        results.push(self.markers[i]);
+        if (self.markers[i].title.toLowerCase().includes(self.search().toLowerCase())){
+          results.push(self.markers[i]);
+          self.markers[i].setVisible(true);
+        } else {
+          self.markers[i].setVisible(false);
+        };
         //todo: sort the titles by abc
     }
-    console.log(results);
+    console.log("Findings: ", results);
+    console.log("First result: ", results[0].title);
+    results.sort(compare);
+    console.log("sorted results: ", results);
     return results;
   }, this);
-
-  console.log(self);
-  self.search = ko.observable('');
 };
 
+// a function to sorting the titles by abc
+function compare(a,b) {
+  if(a.title < b.title) {
+    return -1;
+  }
+  if (a.title > b.title) {
+    return 1;
+  }
+  return 0;
+}
 
 
 $(document).ready(function(){
