@@ -46,7 +46,7 @@ table {
 
 
 body {
-    font-family: Arial, Helvetice, sans-serif;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 h1 {
   color: #A8A8A8;
@@ -54,6 +54,11 @@ h1 {
 }
 li {
   list-style-type: none;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 25px;
+	background-color: #1d2c4d;
+	margin-bottom: 10px;
 }
 ul {
   padding: none;
@@ -86,7 +91,13 @@ ul {
   padding-bottom: 1.5em;
 }
 #filter-area-text {
-  width: 100%;
+	width: 100%;
+  background: #0a0a0a;
+  border-color: #0f0f0f;
+  padding: 5px;
+}
+#text-input {
+	background-color: grey;
 }
 .sidebar {
   background: #000000;

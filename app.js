@@ -130,7 +130,6 @@ var ViewModel = function() {
         //todo: sort the titles by abc
     }
     console.log("Findings: ", results);
-    console.log("First result: ", results[0].title);
     results.sort(compare);
     console.log("sorted results: ", results);
     return results;
