@@ -1,6 +1,7 @@
 //foursquare API keys
 var fsClientID = "5EX5WDIQSCH5T0FF44WIBB35B1URTUCF0LKDVK5FBNJPJ5FO";
 var fsClientSecret = "KFPB0A0BS5OVVKKBZKCF35YD5OG3FYPQQ1O3MCMQPAGWKSVP";
+var oauth_token = "I4AOIKFPDBTV1JHUEUTRKGJ0SW4ONTOMEBNPXGXEPOT0ZSQZ";
 
 //define map as global variable
 var map;
@@ -23,12 +24,14 @@ var ViewModel = function() {
     });
   }
 
-  // marker populator function to bind event listeners, fetches information from foursquare
+  // populator function to bind event listeners, fetch information and animates marker
   this.populateMarker = function(){
     this.setAnimation(google.maps.Animation.BOUNCE);
+    this.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
     setTimeout((function() {
+        this.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
         this.setAnimation(null);
-    }).bind(this), 200);
+    }).bind(this), 1200);
     self.fetchInfo(this);
   };
 
@@ -58,7 +61,6 @@ var ViewModel = function() {
   this.createMapsMarkers = function(markerData){
       //create Google Maps markers
       for (var i in markerData){
-        console.log("Adding ", markerData[i].name)
         this.marker = new google.maps.Marker({
           map: map,
           position: {
@@ -66,6 +68,7 @@ var ViewModel = function() {
             lng: markerData[i].lng
           },
           title: markerData[i].name,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
           animation: google.maps.Animation.DROP
         });
         this.marker.setMap(map);
@@ -82,33 +85,43 @@ var ViewModel = function() {
     var placename;
     var location;
 
+
     //GET API request builder
-    var urlString = "https://api.foursquare.com/v2/venues/search?ll="
+    var searchRequest = "https://api.foursquare.com/v2/venues/search?ll="
     + String(marker.position).replace(pattern, '') + "&name="
     + String(marker.title).split(' ').join('+') + "&intent=match&client_id="
     + fsClientID + "&client_secret=" + fsClientSecret + "&v=20180622";
 
     //fetch data
-    $.getJSON(urlString).done(function(data) {
+    $.getJSON(searchRequest).done(function(data) {
       try {
         markerInfo = data.response.venues[0];
-        console.log("Fetched: ", marker.title, markerInfo);
         placename = markerInfo.name;
         address = markerInfo.location.address;
+        var venue_id = markerInfo.id;
 
+        var ratingRequest = "https://api.foursquare.com/v2/venues/" + String(venue_id) +
+        "?client_id=" + fsClientID + "&client_secret=" + fsClientSecret + "&v=20180622";
+
+        $.getJSON(ratingRequest).done(function(data) {
+          try {
+            venueRating = data.response.venue.rating;
+            
+            self.infoWindow.marker = marker;
+            self.infoWindow.setContent("<h2>" + placename + "</h2>" + "<h2>" + address + "</h2>" + "<h2> Rating: " + venueRating + "</h2>");
+            self.infoWindow.open(map, marker);
+          }
+          catch (e) {
+            console.log("No results for ", marker.title, e);
+          }
+        });
       }
       catch (e) {
         console.log("No results for ", marker.title, e);
       }
-
-      self.infoWindow.marker = marker;
-      self.infoWindow.setContent("<h2>" + placename + "</h2>" + "<h2>" + address + "</h2>");
-      self.infoWindow.open(map, marker);
-
     }).fail(function() {
       console.log("API error at ", marker.title);
     });
-
   };
 
   //initialize map
