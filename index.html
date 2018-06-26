@@ -27,18 +27,21 @@
       <div id="sidebar">
         <div id="box-container">
           <h1>Budapest Nightlife Map</h1>
+          <h3>Powered By Foursquare</h3>
           <div id="search-bar">
             <div id="text-input">
+              <!-- bind the user search to filter the markers and list items -->
               <input id="filter-area-text" type="text"  data-bind="textInput: search, valueUpdate: 'keyup'" placeholder="Filter results...">
             </div>
           </div>
           <ul class="names-list" data-bind="foreach: venues">
+            <!-- if list item is clicked, animate the marker -->
             <li class="item" data-bind="text: title, click: $parent.populateMarker"></li>
           </ul>
         </div>
     </div>
   </div>
-
+    <!-- show or hide the sidebar - hamburger menu -->
     <script type="text/javascript">
       function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle('hide');
