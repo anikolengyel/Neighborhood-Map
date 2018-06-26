@@ -5,8 +5,9 @@ Foursquare and Google Maps. The MVC architecture is implemented with Knockout.
 The project was inspired by the unique nightlife in Budapest and includes some of the best pubs 
 worth visiting there.
 
-The app allows the user to filter places on the list and displays the marker's information on the map. 
-If you click a marker, you can get the city address and the rating of the place.
+The functinality includes map markers to identify the lications and display further information
+about the place. The app allows the user to filter places on the list and displays the marker's 
+information on the map. If you click a marker, you can get the city address and the rating of the place.
 
 # Introduction
  
